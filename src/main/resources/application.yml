@@ -1,1 +1,14 @@
+server:
+  port: 8082
+  servlet.context-path: /books
 
+spring:
+  application.name: book-service
+  h2.console.enabled: true
+  jpa.show-sql: true
+
+#actuator configs
+management:
+  endpoints:
+    enabled-by-default: true
+    web.exposue: health
