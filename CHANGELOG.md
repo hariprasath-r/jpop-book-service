@@ -15,6 +15,7 @@
     - Added interface for controller to segregate business logic and configurations
     - Added generic response for book api
     - Added exception handlers
+    - Added mapstruct for class mapping
 
 ## 09-JUNE-2021
 

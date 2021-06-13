@@ -20,8 +20,11 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
+    @Autowired
+    private BookMapper bookMapper;
+
     public void addBook(BookDto bookDto) {
-        var book = BookMapper.mapToEntity(bookDto);
+        var book = bookMapper.toEntity(bookDto);
         log.info("Mapped to entity: {}", book);
         bookRepository.save(book);
     }
@@ -39,20 +42,20 @@ public class BookService {
     }
 
     public BookDto getBook(Long id) {
-        return BookMapper.mapToDto(findBook(id));
+        return bookMapper.toDto(findBook(id));
     }
 
     public List<BookDto> getBooks() {
         var bookList = bookRepository.findAll();
         log.info("Books from repo: {}", bookList);
         return bookList.stream()
-                .map(BookMapper::mapToDto)
+                .map(bookMapper::toDto)
                 .collect(Collectors.toList());
     }
 
     public void updateBook(BookDto bookDto) {
         findBook(bookDto.getId());
-        bookRepository.save(BookMapper.mapToEntity(bookDto));
+        bookRepository.save(bookMapper.toEntity(bookDto));
         log.info("Book {}, updated successfully.", bookDto.getId());
     }
 
