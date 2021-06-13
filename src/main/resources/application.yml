@@ -1,6 +1,7 @@
 server:
   port: 8082
-  servlet.context-path: /books
+  servlet.context-path: /book-api
+  error.include-stacktrace: never
 
 spring:
   application.name: book-service
