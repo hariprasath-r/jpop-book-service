@@ -13,3 +13,26 @@ management:
   endpoints:
     enabled-by-default: true
     web.exposue: health
+
+#swagger configs
+#configure the path for swagger ui html. Default is /swagger-ui.html
+#configured to default context path
+springdoc:
+  show-actuator: true
+  packagesToScan: in.hp.java.bookservice
+  pathsToMatch: /books/**
+  swagger-ui:
+    enabled: true
+    path: /
+  api-docs:
+    enabled: true
+    path: /docs
+
+#swagger ui properties
+swagger-custom:
+  name: Book API
+  version: '@project.version@' #this will be coming from pom
+  description: '@project.description@'
+  contact:
+    name: Hariprasath
+    url: https://github.com/hariprasath-r

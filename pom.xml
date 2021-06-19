@@ -12,7 +12,7 @@
 	<artifactId>book-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>book-service</name>
-	<description>Book Store Service</description>
+	<description>Interacts with Book Store Data</description>
 	<properties>
 		<java.version>11</java.version>
 		<lombok.version>1.18.20</lombok.version>
@@ -54,6 +54,13 @@
 			<artifactId>mapstruct</artifactId>
 			<version>${org.mapstruct.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.5.9</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

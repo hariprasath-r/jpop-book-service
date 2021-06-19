@@ -10,3 +10,5 @@ Implementation:
 
 Features:
 1. Exposes REST APIs for performing basic CRUD operations on Book
+2. Exposes Swagger UI under the application root context /book-api
+3. Swagger api docs are available under /book-api/docs
