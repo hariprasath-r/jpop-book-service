@@ -1,5 +1,12 @@
 # jpop-book-service
 
+## 20-JUNE-2021
+
+### Configuration
+
+    - Added h2 inmemory and persistent store switch
+    - Added flyway for easy data migration
+
 ## 19-JUNE-2021
 
 ### Documentation
