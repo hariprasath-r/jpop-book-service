@@ -1,5 +1,12 @@
 # jpop-book-service
 
+## 22-JUNE-2021
+
+### Configuration
+
+    - Added spring cloud dependencies for eureka, cloud config
+    - Added spring-cloud-starter-bootstrap for using legacy cloud config connection using bootstrap.yml
+
 ## 20-JUNE-2021
 
 ### Configuration
