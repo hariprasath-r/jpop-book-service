@@ -1,3 +1,6 @@
+# profile for local testing without config server
+# spring.cloud.config.enabled: false in bootstrap.yml
+
 server:
   port: 8082
   servlet.context-path: /book-api
@@ -11,8 +14,8 @@ spring:
     hibernate.ddl-auto: none
     # hibernate.ddl-auto: create-drop
   datasource:
-    username: admin
-    password: admin
+    username: local-admin
+    password: local-admin
     driver-class-name: org.h2.Driver
     # persistent store
     # url: jdbc:h2:file:~/data/dump
@@ -24,8 +27,8 @@ spring.flyway.enabled: true
 flyway:
   url: jdbc:h2:mem:jpop
   schemas: BOOKSERVICE
-  user: admin
-  password: admin
+  user: local-admin
+  password: local-admin
   locations: filesystem:db/migration
 
 #actuator configs
