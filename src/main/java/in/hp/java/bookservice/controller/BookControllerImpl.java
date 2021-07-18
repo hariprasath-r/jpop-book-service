@@ -46,7 +46,7 @@ public class BookControllerImpl implements BookController {
     }
 
     @Override
-    public ResponseEntity<Object> deleteMapping(Long id) {
+    public ResponseEntity<Object> deleteBook(Long id) {
         log.info("Delete Book: {}", id);
         bookService.deleteBook(id);
         return ResponseEntity.status(HttpStatus.GONE).build();

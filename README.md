@@ -1,7 +1,7 @@
 # jpop-book-service
 Book Service for JPOP Program
 
-Implementation: 
+## Implementation:
 - Uses spring-web, spring-data-jpa and inmemory H2 database. Available at context root /h2-console
 - Uses lombok for generating boiler plate code
 - The service context root is /book-api
@@ -9,7 +9,7 @@ Implementation:
 - Added actuator endpoint for health http://localhost:8082/books/actuator/health
 - Added flyway for easy database/schema migration
 
-Features:
+## Features:
 1. Exposes REST APIs for performing basic CRUD operations on Book
 2. Exposes Swagger UI under the application root context /book-api
 3. Swagger api docs are available under /book-api/docs

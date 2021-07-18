@@ -5,10 +5,12 @@ import in.hp.java.bookservice.dto.BookDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@Tag(name = "Book Controller", description = "Book data manipulation")
 @RequestMapping("/books")
 public interface BookController {
 
@@ -38,7 +40,7 @@ public interface BookController {
     @PostMapping
     ResponseEntity<Object> addBook(@RequestBody BookDto book);
 
-    @Operation(summary = "Adds a Book")
+    @Operation(summary = "Updates a Book")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Book Updated"),
             @ApiResponse(responseCode = "404", description = "Book Not Found"),
@@ -47,13 +49,13 @@ public interface BookController {
     @PutMapping
     ResponseEntity<Object> updateBook(@RequestBody BookDto book);
 
-    @Operation(summary = "Adds a Book")
+    @Operation(summary = "Deletes a Book")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "410", description = "Book Deleted"),
             @ApiResponse(responseCode = "500", description = "Processing Error")
     })
     @DeleteMapping("/{id}")
-    ResponseEntity<Object> deleteMapping(@PathVariable Long id);
+    ResponseEntity<Object> deleteBook(@PathVariable Long id);
 
     default <T> ResponseEntity<BookApiResponse<Object>> generateResponse(T response, HttpStatus httpStatus) {
         var bookApiResponse = BookApiResponse.builder()
