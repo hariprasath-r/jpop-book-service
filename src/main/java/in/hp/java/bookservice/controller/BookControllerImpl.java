@@ -28,6 +28,12 @@ public class BookControllerImpl implements BookController {
     }
 
     @Override
+    public ResponseEntity<BookApiResponse<List<BookDto>>> getBooks(List<Long> bookIdentifiers) {
+        log.info("Getting Books for Received Identifiers");
+        return generateResponse(bookService.getBooks(bookIdentifiers), HttpStatus.OK);
+    }
+
+    @Override
     public ResponseEntity<BookApiResponse<BookDto>> getBook(Long id) {
         log.info("Get Book: {}", id);
         return generateResponse(bookService.getBook(id), HttpStatus.OK);
@@ -51,6 +57,6 @@ public class BookControllerImpl implements BookController {
     public ResponseEntity<Object> deleteBook(Long id) {
         log.info("Delete Book: {}", id);
         bookService.deleteBook(id);
-        return ResponseEntity.status(HttpStatus.GONE).build();
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 }

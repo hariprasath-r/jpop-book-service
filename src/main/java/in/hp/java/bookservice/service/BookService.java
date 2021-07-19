@@ -53,6 +53,15 @@ public class BookService {
                 .collect(Collectors.toList());
     }
 
+    public List<BookDto> getBooks(List<Long> bookIdentifiers) {
+        log.info("Book Identifiers received :: {}", bookIdentifiers.size());
+        var books = bookRepository.findAllById(bookIdentifiers);
+        log.info("Books found: {}", books.size());
+        return books.stream()
+                .map(bookMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
     public void updateBook(BookDto bookDto) {
         findBook(bookDto.getId());
         bookRepository.save(bookMapper.toEntity(bookDto));

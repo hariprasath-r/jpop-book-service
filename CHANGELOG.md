@@ -1,5 +1,17 @@
 # jpop-book-service
 
+## 19-JULY-2021
+
+### Implementation
+
+    - Added new endpoint to fetch books based on list of identifiers
+    - Updated the sequence generation strategy for primary key column
+    - Fixes and improvements
+
+### Configuration
+
+    - Updated the hibernate.ddl-auto property to update 
+
 ## 22-JUNE-2021
 
 ### Configuration

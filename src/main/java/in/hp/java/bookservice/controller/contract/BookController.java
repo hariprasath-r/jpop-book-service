@@ -24,6 +24,14 @@ public interface BookController {
     @GetMapping
     ResponseEntity<BookApiResponse<List<BookDto>>> getBooks();
 
+    @Operation(summary = "Get books for supplied ids")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "List of books"),
+            @ApiResponse(responseCode = "500", description = "Processing Error")
+    })
+    @PostMapping("/filter")
+    ResponseEntity<BookApiResponse<List<BookDto>>> getBooks(@RequestBody List<Long> bookIdentifiers);
+
     @Operation(summary = "Gets a Book")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Book Found"),
@@ -53,7 +61,7 @@ public interface BookController {
 
     @Operation(summary = "Deletes a Book")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "410", description = "Book Deleted"),
+            @ApiResponse(responseCode = "202", description = "Book Deleted"),
             @ApiResponse(responseCode = "500", description = "Processing Error")
     })
     @DeleteMapping("/{id}")
