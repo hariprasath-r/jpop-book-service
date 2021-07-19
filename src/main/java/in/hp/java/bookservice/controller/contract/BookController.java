@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Tag(name = "Book Controller", description = "Book data manipulation")
 @RequestMapping("/books")
 public interface BookController {
@@ -20,7 +22,7 @@ public interface BookController {
             @ApiResponse(responseCode = "500", description = "Processing Error")
     })
     @GetMapping
-    ResponseEntity<BookApiResponse<Object>> getBooks();
+    ResponseEntity<BookApiResponse<List<BookDto>>> getBooks();
 
     @Operation(summary = "Gets a Book")
     @ApiResponses(value = {
@@ -29,7 +31,7 @@ public interface BookController {
             @ApiResponse(responseCode = "500", description = "Processing Error")
     })
     @GetMapping("/{id}")
-    ResponseEntity<BookApiResponse<Object>> getBook(@PathVariable Long id);
+    ResponseEntity<BookApiResponse<BookDto>> getBook(@PathVariable Long id);
 
     @Operation(summary = "Adds a Book")
     @ApiResponses(value = {
@@ -57,8 +59,8 @@ public interface BookController {
     @DeleteMapping("/{id}")
     ResponseEntity<Object> deleteBook(@PathVariable Long id);
 
-    default <T> ResponseEntity<BookApiResponse<Object>> generateResponse(T response, HttpStatus httpStatus) {
-        var bookApiResponse = BookApiResponse.builder()
+    default <T> ResponseEntity<BookApiResponse<T>> generateResponse(T response, HttpStatus httpStatus) {
+        var bookApiResponse = BookApiResponse.<T>builder()
                 .response(response)
                 .build();
 

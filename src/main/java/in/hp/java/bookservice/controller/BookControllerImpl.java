@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @Tag(name = "Book Controller")
 @RestController
 @Slf4j
@@ -20,13 +22,13 @@ public class BookControllerImpl implements BookController {
     private BookService bookService;
 
     @Override
-    public ResponseEntity<BookApiResponse<Object>> getBooks() {
+    public ResponseEntity<BookApiResponse<List<BookDto>>> getBooks() {
         log.info("Get Books");
         return generateResponse(bookService.getBooks(), HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<BookApiResponse<Object>> getBook(Long id) {
+    public ResponseEntity<BookApiResponse<BookDto>> getBook(Long id) {
         log.info("Get Book: {}", id);
         return generateResponse(bookService.getBook(id), HttpStatus.OK);
     }
